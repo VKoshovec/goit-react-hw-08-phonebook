@@ -6,6 +6,7 @@ const ContactList = ({contactArr, onClick}) => {
       <ul>
         { contactArr.map((element)=> {
           return <ContactItem key = { element.id }
+             id = { element.id }
              name = { element.name }
              number = { element.number }
              onClick = { onClick }

@@ -2,6 +2,7 @@ import css from './contactItem.module.css'
 import PropTypes from 'prop-types';
 
 const ContactItem = ({
+  id,
   name,
   number,
   onClick  
@@ -9,7 +10,7 @@ const ContactItem = ({
     return (
         <li>{ name }: { number } 
             <button
-             name={ name }
+             name={ id }
              className={ css.contactItemButton }
              onClick={ onClick }>Delete</button>
         </li>
@@ -17,6 +18,7 @@ const ContactItem = ({
 }
 
 ContactItem.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
