@@ -1,0 +1,1 @@
+export const getFiltrState = store => store.filter;
