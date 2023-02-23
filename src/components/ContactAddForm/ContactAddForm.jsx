@@ -1,20 +1,35 @@
-import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 import css from './contactAddForm.module.css';
+import { addContact } from 'redux/contactsSlice';
+import { useSelector ,useDispatch } from 'react-redux';
+import { getContactsState } from 'redux/selectors';
 
 
-const ContactAddForm = ({ onSubmit }) => {
+const ContactAddForm = () => {
+
+    const dispatch = useDispatch();
+    const contactState = useSelector(getContactsState);
 
     const hendleSubmit = e => {
+
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.elements.name.value;
         const number = form.elements.number.value;
-        const id = nanoid ();
-        onSubmit({ id , name, number });
+
+        const newContact = { name, number };
+  
+        const isPresentContact = contactState.find(element => 
+            element.name.toLowerCase() === newContact.name.toLowerCase()
+        ) ? true: false;
+        
+        if (isPresentContact){
+            alert(`${newContact.name} is already in contacts.`)
+        } else {
+            dispatch(addContact(newContact));
+        }        
+
         form.reset();
     }
-
 
     return (
         <form className={css.contactAddForm} onSubmit={ hendleSubmit }>
@@ -42,9 +57,5 @@ const ContactAddForm = ({ onSubmit }) => {
             </form>
     );
 }
-
-ContactAddForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-};
 
 export default ContactAddForm;
