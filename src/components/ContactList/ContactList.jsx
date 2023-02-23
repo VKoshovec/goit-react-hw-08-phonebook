@@ -1,18 +1,13 @@
 import ContactItem from '../ContactItem/ContactItem';
 import { useSelector } from "react-redux";
-import { getContactsState, getFiltrState } from 'redux/selectors';
+import { getContactsState, getFiltrState, getFileteredContacts } from 'redux/selectors';
 
 const ContactList = () => {
  
   const contactState = useSelector(getContactsState);
   const filterState = useSelector(getFiltrState);
 
-  const fileteredContacts = (filterName) => {
-    return contactState.filter(contact =>      
-         contact.name.toLowerCase().includes(filterName.toLowerCase()))
-  }; 
-
-  const contactList = filterState ? fileteredContacts(filterState) : contactState;
+  const contactList = filterState ? getFileteredContacts(contactState ,filterState) : contactState;
 
     return (
       <ul>
