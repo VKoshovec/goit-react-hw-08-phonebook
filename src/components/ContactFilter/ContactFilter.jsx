@@ -3,11 +3,11 @@ import css from './contactFilter.module.css';
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { updFilter } from 'redux/filterSlice';
-import { getFiltrState } from 'redux/selectors';
+import { selectFiltrState } from 'redux/selectors';
 
 const ContactFilter = ( ) => {
 
-    const filterState = useSelector(getFiltrState);
+    const filterState = useSelector(selectFiltrState);
     const dispatch = useDispatch();
 
     const  hendleChange = (e) => {

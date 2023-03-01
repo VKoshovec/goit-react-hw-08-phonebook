@@ -1,33 +1,23 @@
 import css from './contactAddForm.module.css';
-import { addContact } from 'redux/contactsSlice';
-import { useSelector ,useDispatch } from 'react-redux';
-import { getContactsState } from 'redux/selectors';
+import { fetchAddContacts } from 'redux/operations';
+import { useDispatch } from 'react-redux';
 
 
 const ContactAddForm = () => {
 
     const dispatch = useDispatch();
-    const contactState = useSelector(getContactsState);
 
     const hendleSubmit = e => {
 
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.elements.name.value;
-        const number = form.elements.number.value;
+        const phone = form.elements.number.value;
 
-        const newContact = { name, number };
-  
-        const isPresentContact = contactState.find(element => 
-            element.name.toLowerCase() === newContact.name.toLowerCase()
-        ) ? true: false;
-        
-        if (isPresentContact){
-            alert(`${newContact.name} is already in contacts.`)
-        } else {
-            dispatch(addContact(newContact));
-            form.reset();
-        }        
+        const newContact = { name, phone }; 
+        const request = dispatch(fetchAddContacts(newContact));
+        request.then(res => res.type === "contacts/fetchAddContact/fulfilled" && form.reset());
+       
     }
 
     return (
