@@ -1,5 +1,4 @@
 import css from './contactFilter.module.css';
-
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { updFilter } from 'redux/filterSlice';

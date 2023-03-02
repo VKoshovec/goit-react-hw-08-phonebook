@@ -2,7 +2,6 @@ import css from './contactAddForm.module.css';
 import { fetchAddContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 
-
 const ContactAddForm = () => {
 
     const dispatch = useDispatch();
@@ -17,7 +16,7 @@ const ContactAddForm = () => {
         const newContact = { name, phone }; 
         const request = dispatch(fetchAddContacts(newContact));
         request.then(res => res.type === "contacts/fetchAddContact/fulfilled" && form.reset());
-       
+    
     }
 
     return (
@@ -45,6 +44,6 @@ const ContactAddForm = () => {
                 <button className={ css.formButton } type="submit">Add contact</button>
             </form>
     );
-}
+};
 
 export default ContactAddForm;
