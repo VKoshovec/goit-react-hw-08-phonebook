@@ -1,9 +1,3 @@
-/*
-      object-assign
-      (c) Sindre Sorhus
-      @license MIT
-      */
-
 /**
  * @license React
  * react-dom.production.min.js
@@ -86,6 +80,17 @@
  */
 
 /**
+ * React Router DOM v6.8.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
  * React Router v6.8.2
  *
  * Copyright (c) Remix Software Inc.
@@ -104,12 +109,3 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-/** @license React v16.3.2
-       * react.production.min.js
-       *
-       * Copyright (c) 2013-present, Facebook, Inc.
-       *
-       * This source code is licensed under the MIT license found in the
-       * LICENSE file in the root directory of this source tree.
-       */
