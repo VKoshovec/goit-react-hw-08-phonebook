@@ -13,8 +13,8 @@ const App = () => {
     return (
         <div>
            <Navigation/>
-           <Suspense >
-           {/* fallback={ <Loader/> } */}
+           <Suspense fallback={ <p>Loading...</p> } >
+           {/*  */}
               <Routes>
                  <Route path="/login" element={< LoginPage />} />
                  <Route path="/register" element={< RegisterPage />} />
