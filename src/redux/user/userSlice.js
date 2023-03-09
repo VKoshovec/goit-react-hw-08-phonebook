@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchLoginUser, fetchSignUpUser } from "../../redux/user/userOperations";
+import { fetchLoginUser, fetchSignUpUser, fetchLogOutUser } from "../../redux/user/userOperations";
 
 const initialUser = {
     user: {},
@@ -47,6 +47,21 @@ const userSlice = createSlice({
             store.isLoading = false; 
             store.error = payload;
         })
+        .addCase(fetchLogOutUser.pending, (store) => {
+            store.isLoading = true;
+            store.error = null;
+         })
+         .addCase(fetchLogOutUser.fulfilled, (store) => {
+             store.isLoading = false; 
+             store.error = null;
+             store.user = {};
+             store.token = "";
+             store.isLogin= false;
+         })
+         .addCase(fetchLogOutUser.rejected, (store, { payload }) => {
+             store.isLoading = false; 
+             store.error = payload;
+         })
     } 
 });
 

@@ -1,5 +1,5 @@
 import css from './contactAddForm.module.css';
-import { fetchAddContacts } from 'redux/operations';
+import { fetchAddContacts } from 'redux/contacts/contactsOperations';
 import { useDispatch } from 'react-redux';
 
 const ContactAddForm = () => {
@@ -11,9 +11,9 @@ const ContactAddForm = () => {
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.elements.name.value;
-        const phone = form.elements.number.value;
+        const number = form.elements.number.value;
 
-        const newContact = { name, phone }; 
+        const newContact = { name, number }; 
         const request = dispatch(fetchAddContacts(newContact));
         request.then(res => res.type === "contacts/fetchAddContact/fulfilled" && form.reset());
     

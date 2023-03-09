@@ -1,8 +1,8 @@
 import ContactItem from '../ContactItem/ContactItem';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { selectFileteredContacts} from 'redux/selectors';
-import { fetchAllContacts } from 'redux/operations';
+import { selectFileteredContacts, selectAllContact } from 'redux/contacts/contactsSelectors';
+import { fetchAllContacts } from 'redux/contacts/contactsOperations';
 
 const ContactList = () => {
  
@@ -20,7 +20,7 @@ const ContactList = () => {
           return <ContactItem key = { element.id }
              id = { element.id }
              name = { element.name }
-             phone = { element.phone }
+             phone = { element.number }
           />
         }) }
       </ul>   
