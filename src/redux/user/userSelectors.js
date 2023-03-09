@@ -1,0 +1,1 @@
+export const isLogedIn = store => store.user.isLogin;

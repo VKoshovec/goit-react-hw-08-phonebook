@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchLoginUser, fetchSignUpUser } from "../../redux/user/userOperations";
 
 const initialUser = {
-
     user: {},
     token: "",
     isLoading: false,
