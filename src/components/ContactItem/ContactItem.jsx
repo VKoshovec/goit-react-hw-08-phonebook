@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchDelContact } from 'redux/contacts/contactsOperations';
 
 //chakra 
-import { ListItem, ListIcon, Button, Center } from '@chakra-ui/react';
+import { ListItem, ListIcon, Button } from '@chakra-ui/react';
 import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons'
   
 

@@ -25,10 +25,11 @@ const Navigation = () => {
       display={ "flex" } justifyContent={ "space-evenly" } p ={ 0 } >   
 
         <Heading p ={ 0 } m = { 0 } color={ "CaptionText" } textAlign={ "center"}
-        mt = { 10 } mb = { 10 } textShadow={ "2xl" }>Phonebook</Heading>   
+        mt = { 10 } mb = { 10 } textShadow={ "2xl" }><NavLink to="/login">Phonebook</NavLink></Heading>   
 
         <Box alignItems = { "center" } w = { "20%" }
         display={ "flex" } justifyContent={ "space-evenly" }> 
+
 
         {!isAuth && <NavLink className={ scss.link } to="/login">Login</NavLink>}
         {!isAuth && <p>|</p>}
