@@ -6,11 +6,9 @@ import PrivateRoute from "components/Routing/PrivateRoute";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
-
 const LoginPage = lazy(() => import("pages/login/Login"));
 const RegisterPage = lazy(() => import("pages/register/Register"));
 const ContactsPage = lazy(() => import("pages/contacts/Contacts"));
-
 
 
 const App = () => {

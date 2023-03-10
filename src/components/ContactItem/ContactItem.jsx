@@ -1,14 +1,11 @@
-import css from './contactItem.module.css'
+// import css from './contactItem.module.css'
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { fetchDelContact } from 'redux/contacts/contactsOperations';
 
 //chakra 
-import {
-    ListItem,
-    ListIcon,
-  } from '@chakra-ui/react';
-  import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons'
+import { ListItem, ListIcon, Button, Center } from '@chakra-ui/react';
+import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons'
   
 
 const ContactItem = ({ id, name, phone }) => {
@@ -22,13 +19,12 @@ const ContactItem = ({ id, name, phone }) => {
     };
 
     return (
-        <ListItem mt = { 1 }>
-            <ListIcon as={ PhoneIcon }  w={4} h={5} ml = { 3 } mt = { 1 } color='green.300'/>
+        <ListItem mt = { 0 } p = { 0 } alignItems={ 'center' } textAlign={ 'center' }> 
+            <ListIcon as={ PhoneIcon }  w={4} h={ 5 } ml = { 1 } mt = { 1 } color='green.300'/>
             { name }: { phone } 
-            <button
+            <Button color={ 'inherit' } w ={ 5 } h = { 5 } padding = { 2 } mt = { 0 } ml = { 2 }
              name={ id }
-             className={ css.contactItemButton }
-             onClick={ deleteContact }><DeleteIcon w={4} h={4} ml = { 2 }  mr = { 2 } color='red.200'/></button>
+             onClick={ deleteContact }><DeleteIcon w={4} h={4} ml = { 2 }  mr = { 2 } color='red.200'/></Button>
         </ListItem>
     );
 }

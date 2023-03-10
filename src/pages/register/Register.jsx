@@ -1,6 +1,9 @@
-import css from './register.module.css';
 import { fetchSignUpUser } from 'redux/user/userOperations';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
+//chakra
+import { Box, FormControl, FormLabel, Input, Button, Link } from "@chakra-ui/react"
 
 const Register =()=> {
 
@@ -13,47 +16,48 @@ const Register =()=> {
         const name = form.elements.name.value;
         const email = form.elements.email.value;
         const password = form.elements.password.value;
-
-    //     const newContact = { name, phone }; 
-        const request = dispatch(fetchSignUpUser({ name, email, password }));
-        console.log(request);
-        //     request.then(res => res.type === "contacts/fetchAddContact/fulfilled" && form.reset());
-        
+        dispatch(fetchSignUpUser({ name, email, password }));
         }
     
         return (
-            <form className={css.registerForm} onSubmit={ hendleSubmit }>
-                    <label className={ css.formInputLabel}>Name
-                        <input
-                          className={ css.formInput}
+          <form onSubmit={ hendleSubmit }>
+          <Box 
+          backgroundColor={ 'Window' }
+          shadow={ 'dark-lg' }
+          p={ '10' } m = {'auto'} mt = { 20 } w={ 330 } h={ 300 } display={ 'flex' } flexDirection={ 'column' }
+          alignItems = { 'center' } justifyContent = { 'center' }  borderRadius = { 20 }>
+              <FormControl>
+                     <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >Name
+                        <Input bgColor={ 'chakra-subtle-bg' } shadow={ 'inner' } mt = { 2 }
+                          
                           type="text"
                           name="name"
-                        //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                           required>
-                        </input>
-                    </label>
-                    <label className={ css.formInputLabel}>E-mail
-                        <input
-                          className={ css.formInput}
+                        </Input>
+                        </FormLabel>
+                      <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >E-mail
+                        <Input bgColor={ 'chakra-subtle-bg' } shadow={ 'inner' } mt = { 2 }
+                          
                           type="email"
                           name="email"
-                        //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                           required>
-                        </input>
-                    </label>
-                    <label className={ css.formInputLabel}>Passowrd
-                        <input
-                         className={ css.formInput}
+                         </Input>
+                        </FormLabel>
+                      <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >Passowrd
+                        <Input bgColor={ 'chakra-subtle-bg' } shadow={ 'inner' } mt = { 2 }
+                         
                           type="password"
                           name="password"
-                        //   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                           required
                         />
-                    </label>
-                    <button className={ css.formButton } type="submit">Register</button>
+                       </FormLabel>
+                       </FormControl>
+                       <Button color={ 'ButtonText' } w ={ 100 }  padding = { 2 } mt = { 5 } mb = {2} type="submit">Register</Button>
+                       <NavLink to="/login"><Link color={ "linkedin.700" }>login</Link></NavLink>
+                </Box>
                 </form>
         );
 };

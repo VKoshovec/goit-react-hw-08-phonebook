@@ -1,3 +1,4 @@
-export const isLogedIn = store => store.user.isLogin;
+export const isLogedIn = store => store.auth.isLogin;
 
-export const isAuth = store => store.user;
+export const isAuth = store => store.auth;
+export const isUser = store => store.auth.user.name;

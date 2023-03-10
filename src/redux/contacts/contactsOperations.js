@@ -5,17 +5,17 @@ import * as api from '../../services/api'
 export const fetchAllContacts = createAsyncThunk("contacts/fetchAll", async(_, thunkAPI) =>{
     try{
         const auth = thunkAPI.getState();
-        return await api.getAllContscts(auth.user.token);
+        return await api.getAllContscts(auth.auth.token);
     }
-    catch(e){
-        return thunkAPI.rejectWithValue(e);
+    catch({response}){
+        return thunkAPI.rejectWithValue(response.data);
     }
 });
 
 export const fetchAddContacts = createAsyncThunk("contacts/fetchAddContact", async({name, number}, thunkAPI) =>{
     try{
         const auth = thunkAPI.getState();
-        return await api.addContact({ name, number }, auth.user.token);
+        return await api.addContact({ name, number }, auth.auth.token);
     }
     catch(e){
         return thunkAPI.rejectWithValue(e.message);
@@ -39,7 +39,7 @@ export const fetchAddContacts = createAsyncThunk("contacts/fetchAddContact", asy
 export const fetchDelContact = createAsyncThunk("contacts/fetchDelContact", async(id, thunkAPI) => {
     try {
         const auth = thunkAPI.getState();
-        await api.delContact(id, auth.user.token);
+        await api.delContact(id, auth.auth.token);
         return id;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);

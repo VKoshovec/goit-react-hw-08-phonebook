@@ -11,9 +11,9 @@ const initialUser = {
 
 
 const userSlice = createSlice({
-    name: "user",
+    name: "auth",
     initialState: initialUser,
-    extraReducers: (buider) => {
+    extraReducers: buider => {
         buider
         .addCase(fetchLoginUser.pending, (store) => {
            store.isLoading = true;
@@ -53,7 +53,6 @@ const userSlice = createSlice({
          })
          .addCase(fetchLogOutUser.fulfilled, (store) => {
              store.isLoading = false; 
-             store.error = null;
              store.user = {};
              store.token = "";
              store.isLogin= false;
@@ -69,13 +68,13 @@ const userSlice = createSlice({
          .addCase(fetchCurrentUser.fulfilled, (store, { payload }) => {
             const { user, token } = payload;
             store.isLoading = false; 
-            store.error = null;
             store.user = user;
             store.token = token;
             store.isLogin= true;
          })
          .addCase(fetchCurrentUser.rejected, (store, { payload }) => {
             store.isLoading = false; 
+            store.token = "";
             store.error = payload;
         })
     } 

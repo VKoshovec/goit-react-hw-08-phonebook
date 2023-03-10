@@ -1,17 +1,22 @@
 import { useSelector } from "react-redux";
-import { lazy, Suspense } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import { isLogedIn } from "redux/user/userSelectors";
-import Contacts from "pages/contacts/Contacts";
-
-const Login = lazy(() => import("pages/login/Login"));
+import { isAuth } from "redux/user/userSelectors";
 
 
 const PrivateRoute = () =>{
-   if (!useSelector(isLogedIn)) {
-    return <Navigate to='/login' />
+
+   const { isLogin, token } = useSelector(isAuth);
+
+   if (!isLogin && token) {
+     return <p>...Loading</p>
    }
+
+   if (!isLogin && !token) {
+      return <Navigate to='/login'/>
+   }
+
    return <Outlet/>
 };
 
+// return <Navigate to='/login' />
 export default PrivateRoute;

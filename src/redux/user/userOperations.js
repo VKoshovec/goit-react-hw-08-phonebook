@@ -12,9 +12,10 @@ export const fetchLoginUser = createAsyncThunk("user/fetchLoginUser", async(data
 
 export const fetchLogOutUser = createAsyncThunk("user/fetchLogOutUser", async(_, thunkAPI) => { 
     try {
-        return await api.LogOutUser();
-    } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
+        const data = await api.LogOutUser();
+        return data;
+    } catch ({response}) {
+        return thunkAPI.rejectWithValue(response);
     }
 });
 
@@ -26,12 +27,16 @@ export const fetchSignUpUser = createAsyncThunk("user/fetchSignUpUser", async(da
     }
 });
 
-export const fetchCurrentUser = createAsyncThunk("user/fetchCurrentUser", async(data, thunkAPI) => { 
+export const fetchCurrentUser = createAsyncThunk("user/fetchCurrentUser", async(_, thunkAPI) => { 
+
     try {
-        const { auth } = thunkAPI.getState();
-        return await api.CurrentUser(auth.token);
-    } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
+        const { auth } = thunkAPI.getState();  
+        const data = await api.CurrentUser(auth.token);
+        return data;
+    } catch ({response}) {
+
+        return thunkAPI.rejectWithValue(response);
+        
     }
 },
     {

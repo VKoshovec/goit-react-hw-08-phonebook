@@ -17,10 +17,16 @@ export const LoginUser = async(data) => {
     return result;
 };
 
-export const CurrentUser = async(data) => {
-    const { data: result } = await api.post("/users/current", data);
-    saveToken(result.token);
-    return result;
+export const CurrentUser = async(token) => {
+    try {
+        saveToken(token);
+        const { data } = await api.get("/users/current");
+        return data;
+    } catch (error) {
+        saveToken();
+        throw error;
+    }
+    
 };
 
 export const LogOutUser = async() => {
@@ -35,35 +41,17 @@ export const SignUpUser = async(data) => {
     return result;
 };
 
-export const getAllContscts =  async (token) => {
-    try {
-        saveToken(token)
+export const getAllContscts =  async () => {
         const { data } = await api.get("/contacts");
         return data;
-    } catch (e) {
-        saveToken();
-        return e;
-    }
 };
 
 export const addContact = async(data, token) => {
-    try {
-        saveToken(token);
         const {data: result} = await api.post("/contacts", data);
         return result;
-    } catch (e) {
-        saveToken();
-        return e;
-    };
 };
 
 export const delContact = async(id, token) => {
-    try {
-        saveToken(token);
-        const { data } = await api.delete(`/contacts/${id}`);
-        return data;
-    } catch (e) {
-        saveToken();
-        return e;
-    };
+    const { data } = await api.delete(`/contacts/${id}`);
+    return data;
 };
