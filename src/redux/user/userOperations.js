@@ -25,3 +25,21 @@ export const fetchSignUpUser = createAsyncThunk("user/fetchSignUpUser", async(da
         return thunkAPI.rejectWithValue(e.message);
     }
 });
+
+export const fetchCurrentUser = createAsyncThunk("user/fetchCurrentUser", async(data, thunkAPI) => { 
+    try {
+        const { auth } = thunkAPI.getState();
+        return await api.CurrentUser(auth.token);
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    }
+},
+    {
+        condition: (_, {getState}) => {
+            const { auth } = getState();
+            if(!auth.token){
+                return false;
+            }
+        }
+    }
+);

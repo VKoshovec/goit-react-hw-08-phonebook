@@ -17,6 +17,12 @@ export const LoginUser = async(data) => {
     return result;
 };
 
+export const CurrentUser = async(data) => {
+    const { data: result } = await api.post("/users/current", data);
+    saveToken(result.token);
+    return result;
+};
+
 export const LogOutUser = async() => {
     const { data } = await api.post("/users/logout");
     saveToken();

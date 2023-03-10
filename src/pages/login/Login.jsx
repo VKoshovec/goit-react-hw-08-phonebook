@@ -16,8 +16,7 @@ const Login =()=> {
         const password = form.elements.password.value;
 
         const request = dispatch(fetchLoginUser({email, password}));
-        request.then(res => res.type === "user/fetchLoginUser/fulfilled" && form.reset());
-    
+        // request.then(res => res.type === "user/fetchLoginUser/fulfilled" && form.reset());
     }
 
     return (
