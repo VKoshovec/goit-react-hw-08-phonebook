@@ -18,9 +18,9 @@ export const LoginUser = async(data) => {
 };
 
 export const LogOutUser = async() => {
-    const { result } = await api.post("/users/logout");
+    const { data } = await api.post("/users/logout");
     saveToken();
-    return result;
+    return data;
 };
 
 export const SignUpUser = async(data) => {

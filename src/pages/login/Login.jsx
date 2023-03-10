@@ -1,6 +1,8 @@
 import css from './login.module.css';
 import { useDispatch } from 'react-redux';
 import { fetchLoginUser } from 'redux/user/userOperations';
+import { Navigator } from 'react-router-dom';
+import Contacts from 'pages/contacts/Contacts';
 
 const Login =()=> {
 
@@ -13,10 +15,8 @@ const Login =()=> {
         const email = form.elements.email.value;
         const password = form.elements.password.value;
 
-    //     const newContact = { name, phone }; 
         const request = dispatch(fetchLoginUser({email, password}));
-        console.log(request);
-    //     request.then(res => res.type === "contacts/fetchAddContact/fulfilled" && form.reset());
+        request.then(res => res.type === "user/fetchLoginUser/fulfilled" && form.reset());
     
     }
 

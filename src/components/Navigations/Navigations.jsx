@@ -1,9 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import scss from './navigation.module.scss';
 import { useSelector } from "react-redux";
 import { isLogedIn } from "redux/user/userSelectors";
 import { fetchLogOutUser } from "redux/user/userOperations";
+
+//chakra
+import { Link } from '@chakra-ui/react'
 
 
 const Navigation = () => {
@@ -15,13 +18,12 @@ const Navigation = () => {
         dispatch(fetchLogOutUser());
     }
     
-
     return (
       <nav className={ scss.nav }>      
         {!isAuth && <NavLink className={ scss.link } to="/login">Login</NavLink>}
-        {!isAuth && <NavLink className={ scss.link } to="/register">Register</NavLink>}
+        {/* {!isAuth && <NavLink className={ scss.link } to="/register">Register</NavLink>} */}
         {isAuth && <NavLink className={ scss.link } to="/contacts">Contacts</NavLink>}
-        {isAuth && <NavLink className={ scss.link } to="/register" onClick={ hedleLogOut }>LogOut</NavLink>}
+        {isAuth && <NavLink className={ scss.link } to="/login" onClick={ hedleLogOut }>LogOut</NavLink>}
       </nav>
     )
 };
