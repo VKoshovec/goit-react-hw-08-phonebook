@@ -19,7 +19,7 @@ const ContactItem = ({ id, name, phone }) => {
     };
 
     return (
-        <ListItem mt = { 0 } p = { 0 } alignItems={ 'center' } textAlign={ 'center' }> 
+        <ListItem mt = { 0 } p = { 0 } alignItems={ 'center' } textAlign={ 'center' } justifyContent={ 'space-evenly' }> 
             <ListIcon as={ PhoneIcon }  w={4} h={ 5 } ml = { 1 } mt = { 1 } color='green.300'/>
             { name }: { phone } 
             <Button color={ 'inherit' } w ={ 5 } h = { 5 } padding = { 2 } mt = { 0 } ml = { 2 }

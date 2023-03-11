@@ -66,10 +66,9 @@ const userSlice = createSlice({
             store.error = null;
          })
          .addCase(fetchCurrentUser.fulfilled, (store, { payload }) => {
-            const { user, token } = payload;
+            const { name, email } = payload;
             store.isLoading = false; 
-            store.user = user;
-            store.token = token;
+            store.user = { name: name, email: email };
             store.isLogin= true;
          })
          .addCase(fetchCurrentUser.rejected, (store, { payload }) => {

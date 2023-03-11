@@ -34,9 +34,7 @@ export const fetchCurrentUser = createAsyncThunk("user/fetchCurrentUser", async(
         const data = await api.CurrentUser(auth.token);
         return data;
     } catch ({response}) {
-
-        return thunkAPI.rejectWithValue(response);
-        
+        return thunkAPI.rejectWithValue(response);        
     }
 },
     {

@@ -23,7 +23,6 @@ export const CurrentUser = async(token) => {
         const { data } = await api.get("/users/current");
         return data;
     } catch (error) {
-        saveToken();
         throw error;
     }
     

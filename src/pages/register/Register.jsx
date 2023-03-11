@@ -1,9 +1,11 @@
 import { fetchSignUpUser } from 'redux/user/userOperations';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import Loading from "components/ContactList/Loading";
+import bg from '../../source/Newspaper-Transparent-Free-PNG.png'
 
 //chakra
-import { Box, FormControl, FormLabel, Input, Button, Link } from "@chakra-ui/react"
+import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react"
 
 const Register =()=> {
 
@@ -20,12 +22,15 @@ const Register =()=> {
         }
     
         return (
+          <><Loading/><Box  backgroundImage ={ bg } position={ "fixed" } 
+          w={ '100%' } h ={ '100%' } opacity={ 0.1 } top = {-2 } bgRepeat={ 'no-repeat' } bgPosition={ 'center' }></Box>
+          <form onSubmit={ hendleSubmit }></form>
           <form onSubmit={ hendleSubmit }>
           <Box 
           backgroundColor={ 'Window' }
           shadow={ 'dark-lg' }
-          p={ '10' } m = {'auto'} mt = { 20 } w={ 330 } h={ 300 } display={ 'flex' } flexDirection={ 'column' }
-          alignItems = { 'center' } justifyContent = { 'center' }  borderRadius = { 20 }>
+          p={ '10' } m = {'auto'} mt = { 10 } w={ 330 } h={ 300 } display={ 'flex' } flexDirection={ 'column' }
+          alignItems = { 'center' } justifyContent = { 'center' }  borderRadius = { 20 } position={ "relative" }>
               <FormControl>
                      <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >Name
                         <Input bgColor={ 'chakra-subtle-bg' } shadow={ 'inner' } mt = { 2 }
@@ -45,7 +50,7 @@ const Register =()=> {
                           required>
                          </Input>
                         </FormLabel>
-                      <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >Passowrd
+                      <FormLabel color={ 'InfoText' } fontSize={ 15 } fontWeight={ 700 } >Password
                         <Input bgColor={ 'chakra-subtle-bg' } shadow={ 'inner' } mt = { 2 }
                          
                           type="password"
@@ -56,9 +61,10 @@ const Register =()=> {
                        </FormLabel>
                        </FormControl>
                        <Button color={ 'ButtonText' } w ={ 100 }  padding = { 2 } mt = { 5 } mb = {2} type="submit">Register</Button>
-                       <NavLink to="/login"><Link color={ "linkedin.700" }>login</Link></NavLink>
+                       <NavLink to="/login" style={{ color: 'GrayText', fontSize: 20 }}>Or login</NavLink>
                 </Box>
                 </form>
+                </>
         );
 };
 

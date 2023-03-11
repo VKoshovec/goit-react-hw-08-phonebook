@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import Navigation from "components/Navigations/Navigations";
 import PublicRoute from "components/Routing/PublicRoute";
 import PrivateRoute from "components/Routing/PrivateRoute";
+import Loading from "components/ContactList/Loading";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -15,8 +16,9 @@ const App = () => {
     return (
         <ChakraProvider resetCSS = { false }>
            <Navigation/>
-           <Suspense fallback={ <p>Loading...</p> } >
+           <Suspense fallback={ <Loading/> } >
               <Routes> 
+              <Route path="/" element={< LoginPage />} />
                 <Route element = { <PublicRoute/> } >                         
                    <Route path="/login" element={< LoginPage />} />   
                    <Route path="/register" element={< RegisterPage />} />
@@ -24,7 +26,7 @@ const App = () => {
                  <Route element={ <PrivateRoute/> }>  
                    <Route path="/contacts" element={< ContactsPage />} />
                  </Route>   
-                   <Route path="*" element={<LoginPage/>} />
+                   <Route path="*" element={<LoginPage/>}/>
               </Routes>
             </Suspense>
         </ChakraProvider>

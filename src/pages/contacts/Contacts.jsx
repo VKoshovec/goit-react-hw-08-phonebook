@@ -2,7 +2,7 @@ import ContactList from "components/ContactList/ContactList";
 import ContactAddForm from "components/ContactAddForm/ContactAddForm";
 import ContactFilter from "components/ContactFilter/ContactFilter";
 import bg from '../../source/Newspaper-Transparent-Free-PNG.png'
-// import Loading from 'components/ContactList/Loading';
+import Loading from "components/ContactList/Loading";
 
 //chakra
 import { Box, Heading } from "@chakra-ui/react"
@@ -10,12 +10,15 @@ import { Box, Heading } from "@chakra-ui/react"
 const Contacts = () => {
 
    return (<>
+            <Loading/>
             <Heading p ={ 0 } m = { 0 } color={ "CaptionText" } textAlign={ "center"}
-             mt = { 10 } mb = { 10 } shadow={ "2xl" } pb = { 5 } >Phonebook</Heading>
+              mb = { 10 } shadow={ "2xl" } pb = { 3 } pt = { 2 } bgColor={ 'AppWorkspace' } opacity={ 0.7 } 
+             position={ "relative" } zIndex = { 2 } >Contacts</Heading>
 
-            <Box  backgroundImage ={ bg } position={ "fixed" } w={ '100%' } h ={ '100%' } opacity={ 0.1 }></Box>
+            <Box  backgroundImage ={ bg } position={ "fixed" } 
+            w={ '100%' } h ={ '100%' } opacity={ 0.1 } top = {-2 } ></Box>
             
-            <Box  display={ 'flex' } flexDirection={ "column" } position={ "relative" }  >
+            <Box  display={ 'flex' } flexDirection={ "column" } position={ "relative" } >
 
             <ContactAddForm />
             

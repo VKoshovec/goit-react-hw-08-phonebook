@@ -15,9 +15,9 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    if (logedIn){ dispatch(fetchAllContacts());}
-   
+    if(logedIn) {dispatch(fetchAllContacts())}
   }, [dispatch, logedIn])
+
 
   const filteredContacts = useSelector(selectFileteredContacts);
 
