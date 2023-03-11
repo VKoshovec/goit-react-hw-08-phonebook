@@ -21,7 +21,7 @@ const Login =()=> {
         const email = form.elements.email.value;
         const password = form.elements.password.value;
         const redy = dispatch(fetchLoginUser({email, password}));
-        redy.then(res => navigate("/contacts", { replace: true }))
+        redy.then(res => { if(res.type === "user/fetchLoginUser/fulfilled"){ navigate("/contacts", { replace: true })} })
     }
 
     return (
