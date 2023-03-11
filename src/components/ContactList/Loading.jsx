@@ -7,7 +7,8 @@ const Loading = () => {
     const loadingContact = useSelector(selectLoadingState);
     const loadingAuth = useSelector(selectLoadingAuth);
 
-    loadingContact || loadingAuth &&  Notiflix.Loading.circle()
+    loadingContact &&  Notiflix.Loading.circle();
+    loadingAuth &&  Notiflix.Loading.circle();
     !loadingContact &&  Notiflix.Loading.remove();
     !loadingAuth &&  Notiflix.Loading.remove();
 
