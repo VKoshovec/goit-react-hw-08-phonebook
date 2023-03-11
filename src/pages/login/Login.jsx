@@ -2,7 +2,8 @@ import { useDispatch } from 'react-redux';
 import { fetchLoginUser } from 'redux/user/userOperations';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import Loading from "components/ContactList/Loading";
+import Loading from "components/Loading/Loading";
+import Error from 'components/ContactList/Erorr';
 
 import bg from '../../source/Newspaper-Transparent-Free-PNG.png'
 
@@ -21,11 +22,14 @@ const Login =()=> {
         const email = form.elements.email.value;
         const password = form.elements.password.value;
         const redy = dispatch(fetchLoginUser({email, password}));
-        redy.then(res => { if(res.type === "user/fetchLoginUser/fulfilled"){ navigate("/contacts", { replace: true })} })
-    }
+        redy.then(res => {if(res.type === "user/fetchLoginUser/fulfilled"){ navigate("/contacts", { replace: true })}})
+    };
 
     return (
-        <><Loading/><Box  backgroundImage ={ bg } position={ "fixed" } 
+        <>
+        <Error/>
+        <Loading/>
+        <Box  backgroundImage ={ bg } position={ "fixed" } 
         w={ '100%' } h ={ '100%' } opacity={ 0.1 } top = {-2 } bgRepeat={ 'no-repeat' } bgPosition={ 'center' }></Box>
         <form onSubmit={ hendleSubmit }>
         <Box 

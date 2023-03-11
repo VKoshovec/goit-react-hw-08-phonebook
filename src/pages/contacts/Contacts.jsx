@@ -1,11 +1,11 @@
 import ContactList from "components/ContactList/ContactList";
 import ContactAddForm from "components/ContactAddForm/ContactAddForm";
 import ContactFilter from "components/ContactFilter/ContactFilter";
-import bg from '../../source/Newspaper-Transparent-Free-PNG.png'
-import Loading from "components/ContactList/Loading";
+import bg from '../../source/Newspaper-Transparent-Free-PNG.png';
+import Loading from "components/Loading/Loading";
 
 //chakra
-import { Box, Heading } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react";
 
 const Contacts = () => {
 

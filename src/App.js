@@ -3,7 +3,8 @@ import { lazy, Suspense } from "react";
 import Navigation from "components/Navigations/Navigations";
 import PublicRoute from "components/Routing/PublicRoute";
 import PrivateRoute from "components/Routing/PrivateRoute";
-import Loading from "components/ContactList/Loading";
+import Loading from "components/Loading/Loading";
+import NotFound from "pages/notFound/notFound";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -26,11 +27,11 @@ const App = () => {
                  <Route element={ <PrivateRoute/> }>  
                    <Route path="/contacts" element={< ContactsPage />} />
                  </Route>   
-                   <Route path="*" element={<LoginPage/>}/>
+                   <Route path="*" element={<NotFound/>}/>
               </Routes>
             </Suspense>
         </ChakraProvider>
     );
-}
+};
 
 export default App;

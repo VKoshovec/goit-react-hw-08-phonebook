@@ -13,7 +13,7 @@ import AuthLayout from 'components/Authlayout/Authlayout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={ store }>
       <PersistGate loading = { null} persistor = { persistor }>  
         <AuthLayout>
@@ -23,5 +23,5 @@ root.render(
         </AuthLayout>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

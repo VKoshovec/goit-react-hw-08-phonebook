@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
-import { selectErorr } from "redux/selectors";
+import { selectAuthErr } from "redux/user/userSelectors";
 import Notiflix from "notiflix";
 
-const Erorr = () => {
-    return(useSelector(selectErorr) && Notiflix.Notify.failure("Something wrong with API..."))
+const Error = () => {
+    
+    const err = useSelector(selectAuthErr);
+       return (err && Notiflix.Notify.failure(err))
 };
 
-export default Erorr;
+
+export default Error;

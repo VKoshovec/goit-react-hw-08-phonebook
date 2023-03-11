@@ -1,7 +1,8 @@
 import { fetchSignUpUser } from 'redux/user/userOperations';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Loading from "components/ContactList/Loading";
+import Loading from "components/Loading/Loading";
+import Error from 'components/ContactList/Erorr';
 import bg from '../../source/Newspaper-Transparent-Free-PNG.png'
 
 //chakra
@@ -22,7 +23,10 @@ const Register =()=> {
         }
     
         return (
-          <><Loading/><Box  backgroundImage ={ bg } position={ "fixed" } 
+          <>
+          <Error/>
+          <Loading/>
+          <Box  backgroundImage ={ bg } position={ "fixed" } 
           w={ '100%' } h ={ '100%' } opacity={ 0.1 } top = {-2 } bgRepeat={ 'no-repeat' } bgPosition={ 'center' }></Box>
           <form onSubmit={ hendleSubmit }></form>
           <form onSubmit={ hendleSubmit }>
